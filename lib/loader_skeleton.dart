@@ -1,4 +1,4 @@
-library pk_skeleton;
+library loader_skeleton;
 
 import 'package:flutter/material.dart';
 
@@ -26,19 +26,18 @@ Decoration myBoxDec(animation, {isCircle = false}) {
   );
 }
 
-class PKCardSkeleton extends StatefulWidget {
+class CardSkeleton extends StatefulWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
-  PKCardSkeleton(
-      {this.isCircularImage = true, this.isBottomLinesActive = true});
+  CardSkeleton({this.isCircularImage = true, this.isBottomLinesActive = true});
   @override
-  _PKCardSkeletonState createState() => _PKCardSkeletonState();
+  _CardSkeletonState createState() => _CardSkeletonState();
 }
 
-class _PKCardSkeletonState extends State<PKCardSkeleton>
+class _CardSkeletonState extends State<CardSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -165,9 +164,9 @@ Decoration myDarkBoxDec(animation, {isCircle = false}) {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: [
-        Colors.grey[700],
-        Colors.grey[600],
-        Colors.grey[700],
+        Colors.grey[700]!,
+        Colors.grey[600]!,
+        Colors.grey[700]!,
         // Color(0xfff6f7f9),
       ],
       stops: [
@@ -182,19 +181,19 @@ Decoration myDarkBoxDec(animation, {isCircle = false}) {
   );
 }
 
-class PKDarkCardSkeleton extends StatefulWidget {
+class DarkCardSkeleton extends StatefulWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
-  PKDarkCardSkeleton(
+  DarkCardSkeleton(
       {this.isCircularImage = true, this.isBottomLinesActive = true});
   @override
-  _PKDarkCardSkeletonState createState() => _PKDarkCardSkeletonState();
+  _DarkCardSkeletonState createState() => _DarkCardSkeletonState();
 }
 
-class _PKDarkCardSkeletonState extends State<PKDarkCardSkeleton>
+class _DarkCardSkeletonState extends State<DarkCardSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -314,11 +313,11 @@ class _PKDarkCardSkeletonState extends State<PKDarkCardSkeleton>
   }
 }
 
-class PKCardListSkeleton extends StatelessWidget {
+class CardListSkeleton extends StatelessWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
   final int length;
-  PKCardListSkeleton({
+  CardListSkeleton({
     this.isCircularImage = true,
     this.length = 10,
     this.isBottomLinesActive = true,
@@ -329,7 +328,7 @@ class PKCardListSkeleton extends StatelessWidget {
     return ListView.builder(
       itemCount: length,
       itemBuilder: (BuildContext context, int index) {
-        return PKCardSkeleton(
+        return CardSkeleton(
           isCircularImage: isCircularImage,
           isBottomLinesActive: isBottomLinesActive,
         );
@@ -338,11 +337,11 @@ class PKCardListSkeleton extends StatelessWidget {
   }
 }
 
-class PKDarkCardListSkeleton extends StatelessWidget {
+class DarkCardListSkeleton extends StatelessWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
   final int length;
-  PKDarkCardListSkeleton({
+  DarkCardListSkeleton({
     this.isCircularImage = true,
     this.length = 10,
     this.isBottomLinesActive = true,
@@ -353,7 +352,7 @@ class PKDarkCardListSkeleton extends StatelessWidget {
     return ListView.builder(
       itemCount: length,
       itemBuilder: (BuildContext context, int index) {
-        return PKDarkCardSkeleton(
+        return DarkCardSkeleton(
           isCircularImage: isCircularImage,
           isBottomLinesActive: isBottomLinesActive,
         );
@@ -362,19 +361,19 @@ class PKDarkCardListSkeleton extends StatelessWidget {
   }
 }
 
-class PKCardProfileSkeleton extends StatefulWidget {
+class CardProfileSkeleton extends StatefulWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
-  PKCardProfileSkeleton(
+  CardProfileSkeleton(
       {this.isCircularImage = true, this.isBottomLinesActive = true});
   @override
-  _PKCardProfileSkeletonState createState() => _PKCardProfileSkeletonState();
+  _CardProfileSkeletonState createState() => _CardProfileSkeletonState();
 }
 
-class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
+class _CardProfileSkeletonState extends State<CardProfileSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -433,39 +432,38 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                     children: List.generate(
                       4,
                       (i) => Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                height: width * 0.13,
-                                width: width * 0.13,
-                                decoration: myBoxDec(animation,
-                                    isCircle: widget.isCircularImage),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: width * 0.13,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      height: height * 0.008,
-                                      width: width * 0.3,
-                                      decoration: myBoxDec(animation),
-                                    ),
-                                    Container(
-                                      height: height * 0.007,
-                                      width: width * 0.2,
-                                      decoration: myBoxDec(animation),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            height: width * 0.13,
+                            width: width * 0.13,
+                            decoration: myBoxDec(animation,
+                                isCircle: widget.isCircularImage),
                           ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: width * 0.13,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  height: height * 0.008,
+                                  width: width * 0.3,
+                                  decoration: myBoxDec(animation),
+                                ),
+                                Container(
+                                  height: height * 0.007,
+                                  width: width * 0.2,
+                                  decoration: myBoxDec(animation),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ).toList(),
                   ),
                 ),
@@ -509,20 +507,20 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
   }
 }
 
-class PKDarkCardProfileSkeleton extends StatefulWidget {
+class DarkCardProfileSkeleton extends StatefulWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
-  PKDarkCardProfileSkeleton(
+  DarkCardProfileSkeleton(
       {this.isCircularImage = true, this.isBottomLinesActive = true});
   @override
-  _PKDarkCardProfileSkeletonState createState() =>
-      _PKDarkCardProfileSkeletonState();
+  _DarkCardProfileSkeletonState createState() =>
+      _DarkCardProfileSkeletonState();
 }
 
-class _PKDarkCardProfileSkeletonState extends State<PKDarkCardProfileSkeleton>
+class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -581,39 +579,38 @@ class _PKDarkCardProfileSkeletonState extends State<PKDarkCardProfileSkeleton>
                     children: List.generate(
                       4,
                       (i) => Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                height: width * 0.13,
-                                width: width * 0.13,
-                                decoration: myDarkBoxDec(animation,
-                                    isCircle: widget.isCircularImage),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                height: width * 0.13,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Container(
-                                      height: height * 0.008,
-                                      width: width * 0.3,
-                                      decoration: myDarkBoxDec(animation),
-                                    ),
-                                    Container(
-                                      height: height * 0.007,
-                                      width: width * 0.2,
-                                      decoration: myDarkBoxDec(animation),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            height: width * 0.13,
+                            width: width * 0.13,
+                            decoration: myDarkBoxDec(animation,
+                                isCircle: widget.isCircularImage),
                           ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: width * 0.13,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  height: height * 0.008,
+                                  width: width * 0.3,
+                                  decoration: myDarkBoxDec(animation),
+                                ),
+                                Container(
+                                  height: height * 0.007,
+                                  width: width * 0.2,
+                                  decoration: myDarkBoxDec(animation),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ).toList(),
                   ),
                 ),
@@ -657,17 +654,17 @@ class _PKDarkCardProfileSkeletonState extends State<PKDarkCardProfileSkeleton>
   }
 }
 
-class PKCardPageSkeleton extends StatefulWidget {
+class CardPageSkeleton extends StatefulWidget {
   final int totalLines;
-  PKCardPageSkeleton({this.totalLines = 5});
+  CardPageSkeleton({this.totalLines = 5});
   @override
-  _PKCardPageSkeletonState createState() => _PKCardPageSkeletonState();
+  _CardPageSkeletonState createState() => _CardPageSkeletonState();
 }
 
-class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
+class _CardPageSkeletonState extends State<CardPageSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -747,17 +744,17 @@ class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
   }
 }
 
-class PKDarkCardPageSkeleton extends StatefulWidget {
+class DarkCardPageSkeleton extends StatefulWidget {
   final int totalLines;
-  PKDarkCardPageSkeleton({this.totalLines = 5});
+  DarkCardPageSkeleton({this.totalLines = 5});
   @override
-  _PKDarkCardPageSkeletonState createState() => _PKDarkCardPageSkeletonState();
+  _DarkCardPageSkeletonState createState() => _DarkCardPageSkeletonState();
 }
 
-class _PKDarkCardPageSkeletonState extends State<PKDarkCardPageSkeleton>
+class _DarkCardPageSkeletonState extends State<DarkCardPageSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
