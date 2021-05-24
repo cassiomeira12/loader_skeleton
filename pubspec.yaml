@@ -1,7 +1,7 @@
 name: loader_skeleton
 description: A Facebook & Twitter Like Card Loading Shimmer Skeleton Library.
-version: 0.0.3
-homepage: https://github.com/djade007/PKSkeleton
+version: 0.0.4
+homepage: https://github.com/djade007/skeleton_loader
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

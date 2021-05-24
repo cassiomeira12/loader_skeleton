@@ -18,7 +18,7 @@ loader_skeleton: <latest_version>
 
 ### CardSkeleton
 
-<img height="300px"  src="gifs/g1.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g1.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -33,7 +33,7 @@ CardSkeleton(
 
 ### CardListSkeleton
 
-<img height="300px"  src="gifs/g2.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g2.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -49,7 +49,7 @@ CardListSkeleton(
 
 ### CardProfileSkeleton
 
-<img height="300px"  src="gifs/g3.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g3.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -63,7 +63,7 @@ CardProfileSkeleton(
 ```
 ### CardPageSkeleton
 
-<img height="300px"  src="gifs/g4.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g4.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -90,7 +90,7 @@ Enable Dark Theme
 
 ### DarkCardSkeleton
 
-<img height="300px"  src="gifs/g5.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g5.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -104,7 +104,7 @@ DarkCardSkeleton(
 ```
 ### DarkCardListSkeleton
 
-<img height="300px"  src="gifs/g6.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g6.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -120,7 +120,7 @@ DarkCardListSkeleton(
 
 ### DarkCardProfileSkeleton
 
-<img height="300px"  src="gifs/g7.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g7.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
@@ -134,7 +134,7 @@ DarkCardProfileSkeleton(
 ```
 ### DarkCardPageSkeleton
 
-<img height="300px"  src="gifs/g8.gif"/>
+<img height="300px"  src="https://raw.githubusercontent.com/djade007/loader_skeleton/master/gifs/g8.gif"/>
 
 ```dart
 import 'package:loader_skeleton/loader_skeleton.dart';
