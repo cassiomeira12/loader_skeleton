@@ -2,30 +2,6 @@ library loader_skeleton;
 
 import 'package:flutter/material.dart';
 
-Decoration myBoxDec(animation, {isCircle = false}) {
-  return BoxDecoration(
-    shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
-    gradient: LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
-      colors: [
-        Color(0xfff6f7f9),
-        Color(0xffe9ebee),
-        Color(0xfff6f7f9),
-        // Color(0xfff6f7f9),
-      ],
-      stops: [
-        // animation.value * 0.1,
-        animation.value - 1,
-        animation.value,
-        animation.value + 1,
-        // animation.value + 5,
-        // 1.0,
-      ],
-    ),
-  );
-}
-
 class CardSkeleton extends StatefulWidget {
   final bool isCircularImage;
   final bool isBottomLinesActive;
@@ -90,8 +66,8 @@ class _CardSkeletonState extends State<CardSkeleton>
                     Container(
                       height: width * 0.13,
                       width: width * 0.13,
-                      decoration:
-                          myBoxDec(animation, isCircle: widget.isCircularImage),
+                      decoration: myBoxDecLight(animation,
+                          isCircle: widget.isCircularImage),
                     ),
                     SizedBox(
                       width: 20,
@@ -105,12 +81,12 @@ class _CardSkeletonState extends State<CardSkeleton>
                           Container(
                             height: height * 0.008,
                             width: width * 0.3,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                           Container(
                             height: height * 0.007,
                             width: width * 0.2,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                         ],
                       ),
@@ -127,7 +103,7 @@ class _CardSkeletonState extends State<CardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.7,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -135,7 +111,7 @@ class _CardSkeletonState extends State<CardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.8,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -143,7 +119,7 @@ class _CardSkeletonState extends State<CardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.5,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                         ],
                       )
@@ -157,25 +133,49 @@ class _CardSkeletonState extends State<CardSkeleton>
   }
 }
 
-Decoration myDarkBoxDec(animation, {isCircle = false}) {
+Decoration myBoxDecLight(
+  animation, {
+  isCircle = false,
+  Color? lineColor,
+}) {
   return BoxDecoration(
     shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
     gradient: LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: [
-        Colors.grey[700]!,
-        Colors.grey[600]!,
-        Colors.grey[700]!,
-        // Color(0xfff6f7f9),
+        lineColor ?? Color(0xfff6f7f9),
+        lineColor ?? Color(0xffe9ebee),
+        lineColor ?? Color(0xfff6f7f9),
       ],
       stops: [
-        // animation.value * 0.1,
         animation.value - 1,
         animation.value,
         animation.value + 1,
-        // animation.value + 5,
-        // 1.0,
+      ],
+    ),
+  );
+}
+
+Decoration myBoxDecDark(
+  animation, {
+  isCircle = false,
+  Color? lineColor,
+}) {
+  return BoxDecoration(
+    shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+    gradient: LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [
+        lineColor ?? Colors.grey[700]!,
+        lineColor ?? Colors.grey[600]!,
+        lineColor ?? Colors.grey[700]!,
+      ],
+      stops: [
+        animation.value - 1,
+        animation.value,
+        animation.value + 1,
       ],
     ),
   );
@@ -246,8 +246,10 @@ class _DarkCardSkeletonState extends State<DarkCardSkeleton>
                     Container(
                       height: width * 0.13,
                       width: width * 0.13,
-                      decoration: myDarkBoxDec(animation,
-                          isCircle: widget.isCircularImage),
+                      decoration: myBoxDecDark(
+                        animation,
+                        isCircle: widget.isCircularImage,
+                      ),
                     ),
                     SizedBox(
                       width: 20,
@@ -261,12 +263,12 @@ class _DarkCardSkeletonState extends State<DarkCardSkeleton>
                           Container(
                             height: height * 0.008,
                             width: width * 0.3,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                           Container(
                             height: height * 0.007,
                             width: width * 0.2,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                         ],
                       ),
@@ -283,7 +285,7 @@ class _DarkCardSkeletonState extends State<DarkCardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.7,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -291,7 +293,7 @@ class _DarkCardSkeletonState extends State<DarkCardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.8,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -299,7 +301,7 @@ class _DarkCardSkeletonState extends State<DarkCardSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.5,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                         ],
                       )
@@ -423,8 +425,8 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                 Container(
                   height: width * 0.25,
                   width: width * 0.25,
-                  decoration:
-                      myBoxDec(animation, isCircle: widget.isCircularImage),
+                  decoration: myBoxDecLight(animation,
+                      isCircle: widget.isCircularImage),
                 ),
                 Expanded(
                   child: Column(
@@ -437,7 +439,7 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                           Container(
                             height: width * 0.13,
                             width: width * 0.13,
-                            decoration: myBoxDec(animation,
+                            decoration: myBoxDecLight(animation,
                                 isCircle: widget.isCircularImage),
                           ),
                           SizedBox(
@@ -452,12 +454,12 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                                 Container(
                                   height: height * 0.008,
                                   width: width * 0.3,
-                                  decoration: myBoxDec(animation),
+                                  decoration: myBoxDecLight(animation),
                                 ),
                                 Container(
                                   height: height * 0.007,
                                   width: width * 0.2,
-                                  decoration: myBoxDec(animation),
+                                  decoration: myBoxDecLight(animation),
                                 ),
                               ],
                             ),
@@ -477,7 +479,7 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.7,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -485,7 +487,7 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.8,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -493,7 +495,7 @@ class _CardProfileSkeletonState extends State<CardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.5,
-                            decoration: myBoxDec(animation),
+                            decoration: myBoxDecLight(animation),
                           ),
                         ],
                       )
@@ -571,7 +573,7 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                   height: width * 0.25,
                   width: width * 0.25,
                   decoration:
-                      myDarkBoxDec(animation, isCircle: widget.isCircularImage),
+                      myBoxDecDark(animation, isCircle: widget.isCircularImage),
                 ),
                 Expanded(
                   child: Column(
@@ -584,7 +586,7 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                           Container(
                             height: width * 0.13,
                             width: width * 0.13,
-                            decoration: myDarkBoxDec(animation,
+                            decoration: myBoxDecDark(animation,
                                 isCircle: widget.isCircularImage),
                           ),
                           SizedBox(
@@ -599,12 +601,12 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                                 Container(
                                   height: height * 0.008,
                                   width: width * 0.3,
-                                  decoration: myDarkBoxDec(animation),
+                                  decoration: myBoxDecDark(animation),
                                 ),
                                 Container(
                                   height: height * 0.007,
                                   width: width * 0.2,
-                                  decoration: myDarkBoxDec(animation),
+                                  decoration: myBoxDecDark(animation),
                                 ),
                               ],
                             ),
@@ -624,7 +626,7 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.7,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -632,7 +634,7 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.8,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                           SizedBox(
                             height: 10,
@@ -640,7 +642,7 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
                           Container(
                             height: height * 0.007,
                             width: width * 0.5,
-                            decoration: myDarkBoxDec(animation),
+                            decoration: myBoxDecDark(animation),
                           ),
                         ],
                       )
@@ -656,7 +658,15 @@ class _DarkCardProfileSkeletonState extends State<DarkCardProfileSkeleton>
 
 class CardPageSkeleton extends StatefulWidget {
   final int totalLines;
-  CardPageSkeleton({this.totalLines = 5});
+  Color backgroundColor;
+  Color? lineColor;
+
+  CardPageSkeleton({
+    this.totalLines = 5,
+    this.backgroundColor = Colors.white,
+    this.lineColor,
+  });
+
   @override
   _CardPageSkeletonState createState() => _CardPageSkeletonState();
 }
@@ -674,8 +684,10 @@ class _CardPageSkeletonState extends State<CardPageSkeleton>
       duration: Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0).animate(CurvedAnimation(
+      curve: Curves.easeInOutSine,
+      parent: _controller,
+    ));
 
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
@@ -704,40 +716,50 @@ class _CardPageSkeletonState extends State<CardPageSkeleton>
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: List.generate(
-                    widget.totalLines,
-                    (i) => Column(
-                          children: <Widget>[
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.7,
-                              decoration: myBoxDec(animation),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.8,
-                              decoration: myBoxDec(animation),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.5,
-                              decoration: myBoxDec(animation),
-                            ),
-                          ],
-                        )).toList(),
-              )),
+            color: widget.backgroundColor,
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: List.generate(widget.totalLines, (i) {
+                return Column(
+                  children: <Widget>[
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.7,
+                      decoration: myBoxDecLight(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.8,
+                      decoration: myBoxDecLight(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.5,
+                      decoration: myBoxDecLight(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          ),
         );
       },
     );
@@ -746,7 +768,15 @@ class _CardPageSkeletonState extends State<CardPageSkeleton>
 
 class DarkCardPageSkeleton extends StatefulWidget {
   final int totalLines;
-  DarkCardPageSkeleton({this.totalLines = 5});
+  Color backgroundColor;
+  Color? lineColor;
+
+  DarkCardPageSkeleton({
+    this.totalLines = 5,
+    this.backgroundColor = Colors.grey,
+    this.lineColor,
+  });
+
   @override
   _DarkCardPageSkeletonState createState() => _DarkCardPageSkeletonState();
 }
@@ -764,8 +794,10 @@ class _DarkCardPageSkeletonState extends State<DarkCardPageSkeleton>
       duration: Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0).animate(CurvedAnimation(
+      curve: Curves.easeInOutSine,
+      parent: _controller,
+    ));
 
     animation.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
@@ -794,40 +826,50 @@ class _DarkCardPageSkeletonState extends State<DarkCardPageSkeleton>
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-              color: Colors.grey[800],
-              padding: EdgeInsets.all(16),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: List.generate(
-                    widget.totalLines,
-                    (i) => Column(
-                          children: <Widget>[
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.7,
-                              decoration: myDarkBoxDec(animation),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.8,
-                              decoration: myDarkBoxDec(animation),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              height: height * 0.007,
-                              width: width * 0.5,
-                              decoration: myDarkBoxDec(animation),
-                            ),
-                          ],
-                        )).toList(),
-              )),
+            color: widget.backgroundColor,
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: List.generate(widget.totalLines, (i) {
+                return Column(
+                  children: <Widget>[
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.7,
+                      decoration: myBoxDecDark(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.8,
+                      decoration: myBoxDecDark(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: height * 0.007,
+                      width: width * 0.5,
+                      decoration: myBoxDecDark(
+                        animation,
+                        lineColor: widget.lineColor,
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          ),
         );
       },
     );
